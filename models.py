@@ -1,8 +1,24 @@
 #!/usr/bin/python
 import peewee
 from peewee import *
+import ConfigParser
 
-db = MySQLDatabase('rotas', user='root', passwd='sgc123')
+cp = ConfigParser.ConfigParser()
+try:
+    fileset = cp.read("config/db.ini")
+    if len(fileset) == 0:
+        raise ValueError
+except:
+    print "Arquivo de configuracao 'config/db.ini' nao encontrado. Abortando..."
+    exit()
+
+host = cp.get("Database","host")
+port = int(cp.get("Database","port"))
+user = cp.get("Database","user")
+password = cp.get("Database","password")
+schema = cp.get("Database","schema")
+
+db = MySQLDatabase(schema, host=host, port=port, user=user, passwd=password)
 
 class Mapa(peewee.Model):
     id = peewee.PrimaryKeyField()
