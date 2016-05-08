@@ -1,2 +1,3 @@
 *.pyc
-config/db.ini
+server/config/db.ini
+rotas.db

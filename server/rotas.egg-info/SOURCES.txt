@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+rotas/__init__.py
+rotas/sample.py
+rotas.egg-info/PKG-INFO
+rotas.egg-info/SOURCES.txt
+rotas.egg-info/dependency_links.txt
+rotas.egg-info/entry_points.txt
+rotas.egg-info/top_level.txt
+rotas.egg-info/zip-safe
