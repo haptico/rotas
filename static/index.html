@@ -1,0 +1,40 @@
+<html>
+  <head>
+	<!-- Bootstrap core CSS -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+	<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/json2.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="container-fluid col-md-8 col-md-offset-2 col-sm-12">
+            <div class="row">
+                <div  class="text-center col-md-12 col-sm-12">
+					<h2>Escolha uma opção</h2>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+                    <a href="gera_malha.html">
+						<button class="btn btn-lg btn-primary btn-block">Cadastro<br />de Malha</button>
+					</a>
+                </div>
+                <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2">
+                    <a href="consulta_rota.html">
+						<button class="btn btn-lg btn-primary btn-block">Consulta<br />de Rota</button>
+					</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div id="lightBox" style="display: none; background-image:  url(img/lightBox.png); position: fixed; left: 0px; top: 0px; width:100%; height:100%; text-align:center; z-index: 300;">
+		<div id="conteudoEmail" style="position: absolute; left: 0px; top: 0px; width:100%; height:100%; text-align:center; z-index: 1000;">
+			<div id="conteudo" style=" margin: 100px auto; padding:15px; text-align:center;"><img src="img/loading_animation.gif" /><br /><span style="color: #fff;">Carregando...</span></div>
+		</div>
+	</div>    
+  </body>
+</html>
+

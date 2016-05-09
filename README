@@ -1,0 +1,77 @@
+1) Motivações
+
+A motivação principal dessa solução é o princípio "simple is better". Portanto, 
+todas as escolhas tecnológicas foram realizadas de forma a manter a solução o 
+mais simples possível.
+
+A linguagem escolhida para o backend foi o python, pois se trata de uma 
+linguagem de fácil leitura e entendimento, com extensa colaboração da 
+comunidade na criação de bibliotecas e, além de tudo, eficiente.
+
+Com base nessa escolha, algumas bibliotecas foram adicionadas para complementar
+e simplificar a solução:
+- A persistência dos dados se faz através de armazenamento em arquivo SQLite, 
+  que permite a movimentação da base de dados juntamente com a aplicação, 
+  facilitando migrações. Além disso, conseguimos evitar a maior complexidade 
+  existente na utilização de outros SGBDs que não são necessários nesse caso.
+- A biblioteca de ORM escolhida foi a peewee. Uma biblioteca python de simples 
+  utilização que evita a escrita de queries em sql diretamente no código, 
+  fazendo com que esse fique mais limpo e fácil de ler.
+- O protocolo de comunicação entre cliente e servidor utilizado é o JSON. O 
+  JSON é amplamente utilizado na comunidade, de fácil leitura e que minimiza a
+  quantidade de dados transmitidos entre cliente e servidor. Mais 
+  especificamente, o protocolo JSON-RPC 2.0 foi utilizada para permitir, de 
+  forma direta, a chamada de métodos definidos no backend.
+- O frontend foi desenvolvido em html e javascript, que é o responsável por 
+  fazer as chamadas dos métodos do backend expostos pelo webservice. Embora 
+  esse frontend tenha sido desenvolvido para facilitar a utilização dessa 
+  solução, ele pode ser subtituído por qualquer frontend que implemente o 
+  protocolo JSON-RPC 2.0.
+
+
+2) Dependências
+
+As seguintes ferramentas são necessárias para a correta instalação e 
+funcionamento dessa solução:
+
+- python 2.7
+- jsonrpc2 (python package)
+- peewee (python package)
+- PasteScript (python package)
+- SQLite
+
+3) Instruções de instalação/execução:
+
+O código fonte dessa solução está disponivel no repositório abaixo:
+https://github.com/haptico/rotas.git
+
+Apos a instalação das dependências listadas acima e após a realização da 
+clonagem da aplicação (git-clone), deve-se acessar o diretorio raiz da 
+aplicação (nome definido durante a clonagem; vamos assumir que o nome seja 
+"rotas"). Uma vez dentro do diretório "rotas", os passos para execução da 
+aplicação estão definidos a seguir:
+
+- Editar a porta do servidor no arquivo "run.ini"
+    A única configuraçao que poderá ser alterada nesse arquivo é o número da 
+	porta na qual o webservice será executado. Essa configuração fica na seção 
+	"server:main", com a chave "port". O valor padrão já configurado é 8080.
+- Executar a aplicação
+    Para iniciar a aplicação, dentro do diretório "rotas", deve-se executar o 
+	comando	"paster serve run.ini". Esse comando iniciará o servidor do 
+	webservice com as configurações definidas no arquivo run.ini
+- Acessar o cliente (frontend)
+	Ao iniciar o webservice, essa aplicação também disponibiliza um frontend 
+	para consumir os serviços expostos pelo webservice. O cliente dessa 
+	aplicação pode ser acessado, no navegador, através do endereço 
+	"http://localhost:<port>", onde <port> é o número da porta definida no 
+	arquivo run.ini (padrão 8080)
+	
+A aplicação conta com dois diretórios principais utilizados na sua execução. 
+São eles: "rotas/rotas" e "rotas/static". O diretório "rotas/rotas" contém o 
+código utilizado pelo backend. Nesse diretório estão definidos os modelos 
+(Classes), de acordo com a base de dados, e os métodos que são expostos pelo 
+webservice. Já no diretório "rotas/static" está o frontend da aplicação. Lá 
+estão as páginas que consomem os métodos expostos pelo webservice.
+
+Mais detalhes sobre o funcionamento da solução podem ser encontrados nos 
+comentários presentes no próprio código fonte da aplicação.

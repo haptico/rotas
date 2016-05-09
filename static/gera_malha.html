@@ -53,13 +53,13 @@
 			msg = $('<textarea />').html(resultado.message).text();
 			status = resultado.status
 			if (status == 0){
-				classe = 'alert-success';
+				$("#msg").addClass('alert-success').removeClass('alert-warning');
 			}else{
-				classe = 'alert-warning';
+				$("#msg").addClass('alert-warning').removeClass('alert-success');
 			}
 			$("#lightBox").hide();
 			$("#enviar").prop("disabled",false);
-			$("#msg").addClass(classe).html("<h3>"+msg+"</h3>");
+			$("#msg").html("<h3>"+msg+"</h3>");
 		}
 
 		function callrpc(params, callback) {

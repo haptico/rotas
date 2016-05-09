@@ -1,41 +1,39 @@
 #!/usr/bin/python
+# coding=utf-8
 import peewee
 from peewee import *
 import ConfigParser
 
-#cp = ConfigParser.ConfigParser()
-#try:
-#    fileset = cp.read("config/db.ini")
-#    if len(fileset) == 0:
-#        raise ValueError
-#except:
-#    print "Arquivo de configuracao 'config/db.ini' nao encontrado. Abortando..."
-#    exit()
+# Arquivo onde serão armazenados os dados das malhas
+db = SqliteDatabase('.db/rotas.db')
 
-#host = cp.get("Database","host")
-#port = int(cp.get("Database","port"))
-#user = cp.get("Database","user")
-#password = cp.get("Database","password")
-#schema = cp.get("Database","schema")
-
-db = SqliteDatabase('rotas.db')
-
-
+############################################################################
+# Função que cria as tabelas do BD caso seja a primeira execução do código #
+############################################################################
 def init():
 	try:
 		db.create_tables([Mapa, Rota]);
 	except:
 		pass
-	
+
+#####################################
+# Classe base para os outros models #
+#####################################
 class BaseModel(Model):
     class Meta:
         database = db
 		
+##########################################
+# Classe que define o modelo/tabela Mapa #
+##########################################
 class Mapa(BaseModel):
     id = PrimaryKeyField()
     nome_mapa = CharField()
 
 
+##########################################
+# Classe que define o modelo/tabela Rota #
+##########################################
 class Rota(BaseModel):
     id = PrimaryKeyField()
     nome_rota = CharField()
